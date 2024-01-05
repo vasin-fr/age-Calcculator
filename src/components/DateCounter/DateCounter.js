@@ -54,7 +54,7 @@ const DateCounter = ({ takeTagetDate, targetDate }) => {
           <div>months</div>
         </li>
         <li className="denomination">
-          {targetDate.days !== undefined || targetDate.days !== "" ? (
+          {targetDate.days !== undefined ? (
             <span>{targetDate.days}</span>
           ) : (
             <span>- -</span>
