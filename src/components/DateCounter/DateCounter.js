@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import "./_DateCounter.sass";
 
 const DateCounter = ({ takeTagetDate, targetDate }) => {
