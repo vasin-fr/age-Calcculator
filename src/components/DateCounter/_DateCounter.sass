@@ -1,0 +1,99 @@
+@import '../../styles/_constants'
+
+
+.block
+  font-family: 'Poppins', sans-serif
+  display: flex
+  flex-direction: column
+  justify-content: space-between 
+  background-color: $white
+  padding: 3rem
+  width: 650px
+  height: 500px
+  border-radius: 1rem 1rem 10rem 1rem
+  &__inputs
+    display: flex
+    flex-direction: row
+    div
+      padding-left: 2rem
+      display: flex
+      flex-direction: column
+      &:first-child
+        padding-left: 0
+      label
+        color: $smokeyGrey
+        text-transform: uppercase
+        font-weight: 400
+        letter-spacing: 2.5px
+        padding-bottom: 5px
+        font-size: 14px
+      input
+        font-family: 'Poppins', sans-serif
+        font-size: 2rem
+        width: 7rem
+        padding: 0.8rem 1rem
+        color: $offBlack
+        font-style: bold
+        border-radius: 5px
+        border: 1px solid $lightGrey
+        transition: .2s all
+        &:hover
+          transition: .1s all
+          border: 1px solid $purple
+        &:focus
+          transition: .1s all
+          border: 2px solid $purple
+          outline: none
+      p
+        display: none
+    .error
+      label
+        color: $lightRed
+      input
+        border: 1px solid $lightRed
+      p
+        display: block
+        margin: 0
+        padding-top: 5px
+        font-size: 0.8rem
+        font-weight: 400
+        font-style: italic
+        color: $lightRed
+
+  &__divisor
+    display: flex
+    flex-direction: row
+    align-items: center
+    .line
+      width: calc( 100% - 90px )
+      border-bottom: 1px solid $lightGrey
+    button
+      width: 90px
+      height: 90px
+      border-radius: 100%
+      border: none
+      background-color: $purple
+      background-image: url('./icon-arrow.svg')
+      background-size: 50%
+      background-position: center
+      cursor: pointer
+      background-repeat: no-repeat
+      transition: .2s all
+      &:hover
+        transition: .2s all
+        background-color: $offBlack
+  &__results
+    list-style-type: none
+    padding: 0
+    margin: 0
+    .denomination
+      display: flex
+      font-style: italic
+      font-weight: 800
+      font-size: 6rem
+      margin-top: -2.5rem
+      span
+        color: $purple
+        letter-spacing: -2px
+      div
+        padding-left: 1rem
