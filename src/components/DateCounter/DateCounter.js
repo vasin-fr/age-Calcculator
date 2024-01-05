@@ -1,26 +1,42 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./_DateCounter.sass";
 
-const DateCounter = () => {
-  // пиздилка інпутів
-  // повертає дату
-
+const DateCounter = ({ takeTagetDate, targetDate }) => {
+  console.log(targetDate.days !== "");
   return (
     <div className="block">
       <div className="block__inputs">
         <div className="error">
           <label htmlFor="day">Day</label>
-          <input type="number" placeholder="DD" id="day" />
+          <input
+            type="number"
+            placeholder="DD"
+            id="day"
+            onChange={(e) => takeTagetDate(e.target.value, "days")}
+            value={takeTagetDate.days}
+          />
           <p>Catch a Error</p>
         </div>
         <div>
           <label htmlFor="month">Month</label>
-          <input type="number" placeholder="MM" id="month" />
+          <input
+            type="number"
+            placeholder="MM"
+            id="month"
+            value={takeTagetDate.month}
+            onChange={(e) => takeTagetDate(e.target.value, "month")}
+          />
           <p>Catch a Error</p>
         </div>
         <div>
           <label htmlFor="year">Year</label>
-          <input type="number" placeholder="YYYY" id="year" />
+          <input
+            type="number"
+            placeholder="YYYY"
+            id="year"
+            value={takeTagetDate.year}
+            onChange={(e) => takeTagetDate(e.target.value, "year")}
+          />
           <p>Catch a Error</p>
         </div>
       </div>
@@ -38,7 +54,11 @@ const DateCounter = () => {
           <div>months</div>
         </li>
         <li className="denomination">
-          <span>- -</span>
+          {targetDate.days !== undefined || targetDate.days !== "" ? (
+            <span>{targetDate.days}</span>
+          ) : (
+            <span>- -</span>
+          )}
           <div>days</div>
         </li>
       </ul>
