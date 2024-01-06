@@ -27,12 +27,16 @@ function Primary() {
   };
 
   const differenceInDate = ({ years, months, days }) => {
+    console.log(years);
     const currentDate = new Date();
     const targetDate = new Date(years, +months - 1, days);
     console.log(targetDate.toLocaleString());
 
     if (years && months && days) {
-      years = currentDate.getFullYear() - targetDate.getFullYear();
+      years =
+        years < 100
+          ? currentDate.getFullYear() - years
+          : currentDate.getFullYear() - targetDate.getFullYear();
       months = currentDate.getMonth() - targetDate.getMonth();
       days = currentDate.getDate() - targetDate.getDate();
 
@@ -44,7 +48,6 @@ function Primary() {
         months--;
         days += 31;
       }
-
       return setDiferenceDate({
         years: years,
         months: months,

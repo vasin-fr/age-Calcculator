@@ -32,7 +32,7 @@ const DateCounter = ({
   };
 
   return (
-    <div className="block">
+    <div className="block animate__animated animate__zoomInRight">
       <div className="block__inputs">
         <div className={hasError || +targetDate.days > 31 ? "error" : ""}>
           <label htmlFor="days">Day</label>
@@ -81,6 +81,7 @@ const DateCounter = ({
           onClick={validationInputs}
           onTouchEnd={validationInputs}
         ></button>
+        <div className="line"></div>
       </div>
       <ul className="block__results">
         <li className="denomination">

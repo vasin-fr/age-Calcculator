@@ -1,6 +1,5 @@
 @import '../../styles/_constants'
 
-
 .block
   font-family: 'Poppins', sans-serif
   display: flex
@@ -71,6 +70,8 @@
     .line
       width: calc( 100% - 90px )
       border-bottom: 1px solid $lightGrey
+      &:last-child
+        display: none
     button
       width: 90px
       height: 90px
@@ -101,3 +102,5 @@
         letter-spacing: -2px
       div
         padding-left: 1rem
+
+@import '../../styles/_media'

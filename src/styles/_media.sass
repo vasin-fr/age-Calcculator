@@ -1,0 +1,28 @@
+@media screen and (max-width: 762px)
+    body
+        .block
+            transform: scale(0.60)
+            &__divisor
+                .line
+                    width: calc( 50% - 90px )
+                    border-bottom: 1px solid $lightGrey
+                    &:last-child
+                        display: block
+                        width: calc( 50% - 90px )
+                        border-bottom: 1px solid $lightGrey
+            &__results
+                .denomination
+                span
+                    font-size: 4rem
+                    color: $purple
+                    letter-spacing: -2px
+                div
+                    font-size: 4rem
+                    padding-left: 1rem
+
+@media screen and (max-width: 402px)
+    body
+        .block
+            transform: scale(0.40)
+
+
