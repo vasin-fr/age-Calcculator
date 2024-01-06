@@ -1,61 +1,107 @@
-import React from "react";
+import React, { useState } from "react";
 import "./_DateCounter.sass";
 
-const DateCounter = ({ takeTagetDate, targetDate }) => {
-  console.log(targetDate.days !== "");
+const DateCounter = ({
+  takeTagetDate,
+  targetDate,
+  resultsCount,
+  resultsDate,
+}) => {
+  const [hasError, setHasError] = useState(false);
+
+  const validationInputs = () => {
+    if (
+      +targetDate.days > 31 ||
+      +targetDate.months > 12 ||
+      +targetDate.years > new Date().getFullYear()
+    ) {
+      setHasError(true);
+    } else {
+      setHasError(false);
+      resultsCount(targetDate);
+    }
+    if (
+      targetDate.days === undefined ||
+      targetDate.months === undefined ||
+      targetDate.years === undefined
+    ) {
+      setHasError(true);
+    } else {
+      setHasError(false);
+    }
+  };
+
   return (
     <div className="block">
       <div className="block__inputs">
-        <div className="error">
-          <label htmlFor="day">Day</label>
+        <div className={hasError || +targetDate.days > 31 ? "error" : ""}>
+          <label htmlFor="days">Day</label>
           <input
             type="number"
             placeholder="DD"
-            id="day"
+            id="days"
             onChange={(e) => takeTagetDate(e.target.value, "days")}
-            value={takeTagetDate.days}
+            value={targetDate.days}
           />
-          <p>Catch a Error</p>
+          <p>Must be a valid day</p>
         </div>
-        <div>
-          <label htmlFor="month">Month</label>
+        <div className={hasError || +targetDate.months > 12 ? "error" : ""}>
+          <label htmlFor="months">Month</label>
           <input
             type="number"
             placeholder="MM"
-            id="month"
-            value={takeTagetDate.month}
-            onChange={(e) => takeTagetDate(e.target.value, "month")}
+            id="months"
+            value={targetDate.months}
+            onChange={(e) => takeTagetDate(e.target.value, "months")}
           />
-          <p>Catch a Error</p>
+          <p>Must be a valid month</p>
         </div>
-        <div>
-          <label htmlFor="year">Year</label>
+        <div
+          className={
+            hasError || +targetDate.years > new Date().getFullYear()
+              ? "error"
+              : ""
+          }
+        >
+          <label htmlFor="years">Year</label>
           <input
             type="number"
             placeholder="YYYY"
-            id="year"
-            value={takeTagetDate.year}
-            onChange={(e) => takeTagetDate(e.target.value, "year")}
+            id="years"
+            value={targetDate.years}
+            onChange={(e) => takeTagetDate(e.target.value, "years")}
           />
-          <p>Catch a Error</p>
+          <p>Must be in the past</p>
         </div>
       </div>
       <div className="block__divisor">
         <div className="line"></div>
-        <button type="button"></button>
+        <button
+          type="button"
+          onClick={validationInputs}
+          onTouchEnd={validationInputs}
+        ></button>
       </div>
       <ul className="block__results">
         <li className="denomination">
-          <span>- -</span>
+          {resultsDate?.years !== undefined ? (
+            <span>{resultsDate?.years}</span>
+          ) : (
+            <span>- -</span>
+          )}
           <div>years</div>
         </li>
         <li className="denomination">
-          <span>- -</span>
+          {resultsDate?.months !== undefined ? (
+            <span>{resultsDate?.months}</span>
+          ) : (
+            <span>- -</span>
+          )}
           <div>months</div>
         </li>
         <li className="denomination">
-          {targetDate.days !== undefined ? (
-            <span>{targetDate.days}</span>
+          {resultsDate?.days !== undefined ? (
+            <span>{resultsDate?.days}</span>
           ) : (
             <span>- -</span>
           )}
