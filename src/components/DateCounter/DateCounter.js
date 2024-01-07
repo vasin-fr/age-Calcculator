@@ -80,10 +80,22 @@ const DateCounter = ({
           type="button"
           onClick={validationInputs}
           onTouchEnd={validationInputs}
+          className={
+            targetDate.days !== undefined &&
+            targetDate.days !== "" &&
+            targetDate.months !== undefined &&
+            targetDate.months !== "" &&
+            targetDate.years !== undefined &&
+            targetDate.years !== ""
+              ? "shadow"
+              : hasError === true
+              ? "error"
+              : ""
+          }
         ></button>
         <div className="line"></div>
       </div>
-      <ul className="block__results">
+      <ul className={hasError ? "block__results--error" : "block__results"}>
         <li className="denomination">
           {resultsDate?.years !== undefined ? (
             <span>{resultsDate?.years}</span>

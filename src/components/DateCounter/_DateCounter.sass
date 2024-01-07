@@ -87,6 +87,13 @@
       &:hover
         transition: .2s all
         background-color: $offBlack
+    .shadow
+      transition: .2s all
+      box-shadow: 0 0 2rem $purple
+    .error
+      transition: .2s all
+      background-color: $lightRed
+      box-shadow: 0 0 2rem $lightRed
   &__results
     list-style-type: none
     padding: 0
@@ -102,5 +109,10 @@
         letter-spacing: -2px
       div
         padding-left: 1rem
+  .block__results--error
+    @extend .block__results
+    .denomination
+      span
+        color: $lightRed
 
 @import '../../styles/_media'
