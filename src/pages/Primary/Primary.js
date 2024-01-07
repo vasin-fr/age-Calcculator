@@ -49,9 +49,9 @@ function Primary() {
         days += 31;
       }
       return setDiferenceDate({
-        years: years,
-        months: months,
-        days: days,
+        years: years < 0 ? 0 : years,
+        months: months < 0 ? 0 : months,
+        days: days < 0 ? 0 : days,
       });
     }
   };
