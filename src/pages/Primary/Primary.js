@@ -27,10 +27,8 @@ function Primary() {
   };
 
   const differenceInDate = ({ years, months, days }) => {
-    console.log(years);
     const currentDate = new Date();
     const targetDate = new Date(years, +months - 1, days);
-    console.log(targetDate.toLocaleString());
 
     if (years && months && days) {
       years =
@@ -40,11 +38,11 @@ function Primary() {
       months = currentDate.getMonth() - targetDate.getMonth();
       days = currentDate.getDate() - targetDate.getDate();
 
-      if (months < 0) {
+      if (months <= 0) {
         years--;
         months += 12;
       }
-      if (days < 0) {
+      if (days <= 0) {
         months--;
         days += 31;
       }
