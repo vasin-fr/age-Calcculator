@@ -80,6 +80,7 @@ const DateCounter = ({
           type="button"
           onClick={validationInputs}
           onTouchEnd={validationInputs}
+          aria-label="count"
           className={
             targetDate.days !== undefined &&
             targetDate.days !== "" &&
