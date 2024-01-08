@@ -46,6 +46,10 @@ function Primary() {
         months--;
         days += 31;
       }
+      if (months === 12) {
+        years++;
+        months = 0;
+      }
       return setDiferenceDate({
         years: years < 0 ? 0 : years,
         months: months < 0 ? 0 : months,
